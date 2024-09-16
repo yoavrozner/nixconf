@@ -1,0 +1,7 @@
+[user]
+	email = rozner.yoav@gmail.com
+	name = yoavrozner
+[alias]
+	s = status
+	c = checkout
+	cm = commit -m
