@@ -87,6 +87,7 @@
     python3
     stow
     gnomeExtensions.hide-cursor
+    gnome.nautilus
   ];
 
   virtualisation.docker.enable = true;
