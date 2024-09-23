@@ -86,6 +86,7 @@
     nodejs
     python3
     stow
+    gnomeExtensions.hide-cursor
   ];
 
   virtualisation.docker.enable = true;
