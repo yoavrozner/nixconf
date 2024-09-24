@@ -13,5 +13,5 @@ compinit
 alias ll="ls -al"
 nixconffile="/etc/nixos/configuration.nix"
 alias nixre="sudo nixfmt $nixconffile & sudo nixos-rebuild switch"
-alias nixconf="code $nixconffile"
+alias nixconf="sudo vim $nixconffile"
 eval "$(starship init zsh)"
