@@ -5,3 +5,5 @@
 	s = status
 	c = checkout
 	cm = commit -m
+[push]
+	autoSetupRemote = true
