@@ -63,7 +63,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
-      "docker"
+      #"docker"
     ];
     packages = with pkgs; [
       #  thunderbird
@@ -87,17 +87,21 @@
     python3
     stow
     gnomeExtensions.hide-cursor
+    gnomeExtensions.workspaces-indicator-by-open-apps
     gnome.nautilus
-python312Packages.pip
+    python312Packages.pip
+    mongodb-compass
+    #docker
   ];
 
-  virtualisation.docker.enable = true;
+  #this is the issue!!!!!!!!!!!!!!!!!!!!!!!!!
+  #virtualisation.docker.enable = true;
   networking.firewall = {
     enable = true;
-    extraCommands = ''
-      iptables -I INPUT 1 -s 172.16.0.0/12 -p tcp -d 172.17.0.0 -j ACCEPT
-      iptables -I INPUT 2 -s 172.16.0.0/12 -p udp -d 172.17.0.0 -j ACCEPT
-    '';
+    #extraCommands = ''
+    #  iptables -I INPUT 1 -s 172.16.0.0/12 -p tcp -d 172.17.0.0 -j ACCEPT
+    #  iptables -I INPUT 2 -s 172.16.0.0/12 -p udp -d 172.17.0.0 -j ACCEPT
+    #'';
   };
 
   services.gnome.core-utilities.enable = false;
@@ -117,7 +121,7 @@ python312Packages.pip
   programs.direnv.enable = true;
 
   fonts.packages = with pkgs; [ (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
-
+  fonts.fontDir.enable = true;
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -129,13 +133,17 @@ python312Packages.pip
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [
+    80
+    8080
+    8000
+  ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  # networking.firewall.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
