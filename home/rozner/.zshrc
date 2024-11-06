@@ -11,7 +11,7 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 alias ll="ls -al"
-nixconffile="/etc/nixos/configuration.nix"
+nixconffile="~/Desktop/nixconf/etc/nixos/configuration.nix"
 alias nixre="sudo nixfmt $nixconffile & sudo nixos-rebuild switch"
 alias nixconf="sudo vim $nixconffile"
 eval "$(starship init zsh)"
