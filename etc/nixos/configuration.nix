@@ -63,7 +63,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
-      #"docker"
+      "docker"
     ];
     packages = with pkgs; [
       #  thunderbird
@@ -91,17 +91,16 @@
     gnome.nautilus
     python312Packages.pip
     mongodb-compass
-    #docker
   ];
 
   #this is the issue!!!!!!!!!!!!!!!!!!!!!!!!!
-  #virtualisation.docker.enable = true;
+  virtualisation.docker.enable = true;
   networking.firewall = {
     enable = true;
-    #extraCommands = ''
-    #  iptables -I INPUT 1 -s 172.16.0.0/12 -p tcp -d 172.17.0.0 -j ACCEPT
-    #  iptables -I INPUT 2 -s 172.16.0.0/12 -p udp -d 172.17.0.0 -j ACCEPT
-    #'';
+    extraCommands = ''
+      iptables -I INPUT 1 -s 172.16.0.0/12 -p tcp -d 172.17.0.0 -j ACCEPT
+      iptables -I INPUT 2 -s 172.16.0.0/12 -p udp -d 172.17.0.0 -j ACCEPT
+    '';
   };
 
   services.gnome.core-utilities.enable = false;
@@ -136,11 +135,7 @@
   services.openssh.enable = true;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [
-    80
-    8080
-    8000
-  ];
+  #networking.firewall.allowedTCPPorts = [ 80 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = true;
